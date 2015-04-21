@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="htmlunit-2.16-OSGi">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/htmlunit-2.16-OSGi.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../kognitive_suche/kognitive_suche/lib/junit-4.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
