@@ -18,22 +18,23 @@ import java.util.List;
 
             //driver.setJavascriptEnabled(true);
             // And now use this to visit Google
-            driver.get("http://www.google.de");
+            driver.get("https://de.search.yahoo.com/");
 
             // Enter the query string "Cheese"
-            WebElement query = driver.findElement(By.name("q"));
+            WebElement query = driver.findElement(By.name("p"));
             query.sendKeys("ente");
 
-
+            System.out.println(driver.getTitle().toString());
             // Sleep until the div we want is visible or 5 seconds is over
             long end = System.currentTimeMillis() + 5000;
+            List<WebElement> resultsDiv;
             while (System.currentTimeMillis() < end) {
-                WebElement resultsDiv = driver.findElement(By.className("g"));
+                resultsDiv = driver.findElements(By.id("results"));
 
-                // If results have been returned, the results are displayed in a drop down.
-                if (resultsDiv.isDisplayed()) {
-                    break;
-                }
+            }
+            List<WebElement> test = driver.findElements(By.id("results"));
+            for (WebElement suggestion : test) {
+                System.out.println(suggestion.getText());
             }
 
             // And now list the suggestions
