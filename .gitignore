@@ -88,3 +88,6 @@ crashlytics.properties
 crashlytics-build.properties
 
 
+
+.idea
+out
