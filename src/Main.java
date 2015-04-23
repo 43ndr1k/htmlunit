@@ -6,7 +6,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // Create a new instance of the html unit driver
         // Notice that the remainder of the code relies on the interface,
 
@@ -14,24 +14,30 @@ public class Main {
 
         // Declaring and initialising the HtmlUnitWebDriver
         HtmlUnitDriver unitDriver = new HtmlUnitDriver(BrowserVersion.CHROME);
-        unitDriver.setJavascriptEnabled(true);
+        //unitDriver.setJavascriptEnabled(true);
 
 
 
 
+            unitDriver.get("https://duckduckgo.com/html/?q=Harry%20Potter");
+/*        WebElement query = unitDriver.findElement(By.name("q"));
+        query.sendKeys("ente");*/
+            String domainName = unitDriver.getTitle();
+            System.out.println("Domain name is " + domainName);
 
-        unitDriver.get("");
-        WebElement query = unitDriver.findElement(By.name("q"));
-        query.sendKeys("ente");
-        String domainName = unitDriver.getTitle();
-        System.out.println("Domain name is " + domainName);
+            // List<WebElement> test = unitDriver.findElements(By.className("links_main links_deep"));
+            List<WebElement> test1 = unitDriver.findElements(By.id("links_wrapper"));
+            //System.out.println(test);
 
-        List<WebElement> test = unitDriver.findElements(By.className("c-info__body"));
-        System.out.println(test);
+            for (WebElement tt : test1) {
+                System.out.println(tt.getText().toString());
+                System.out.println("_________________________________");
+                System.out.println(tt.toString());
+            }
+
 
 
     }
-
 
 }
 
