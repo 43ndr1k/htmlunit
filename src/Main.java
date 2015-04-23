@@ -1,60 +1,115 @@
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
-import com.gargoylesoftware.htmlunit.html.HtmlDivision;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.gargoylesoftware.htmlunit.BrowserVersion;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+
+import java.util.List;
 
 public class Main {
-
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        // Create a new instance of the html unit driver
+        // Notice that the remainder of the code relies on the interface,
+
+
+
+        // Declaring and initialising the HtmlUnitWebDriver
+        HtmlUnitDriver unitDriver = new HtmlUnitDriver(BrowserVersion.CHROME);
+        unitDriver.setJavascriptEnabled(true);
+
+
+
+
+
+        unitDriver.get("https://duckduckgo.com/");
+        WebElement query = unitDriver.findElement(By.name("q"));
+        query.sendKeys("ente");
+        String domainName = unitDriver.getTitle();
+        System.out.println("Domain name is " + domainName);
+
+        List<WebElement> test = unitDriver.findElements(By.className("c-info__body"));
+        System.out.println(test);
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      /*
+
+
+
+        WebClient webClient = new WebClient();
+        //driver.setJavascriptEnabled(true);
+
+
+
+        //System.out.println(driver.isJavascriptEnabled());
+
+        //driver.setJavascriptEnabled(true);
+        // And now use this to visit Google
+        //driver.get("http://blog.fastreboot.de");
+
         try {
-            homePage();
-            //getElements();
-        } catch (Exception e) {
+            HtmlPage page = webClient.getPage("http://blog.fastreboot.de");
+            page.getTitleText();
+            page.getElementsByName("entry-content");
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
-    }
+
+*/
+
+    //driver.get("https://duckduckgo.com/?q=test&ia=about");
+    // Enter the query string "Cheese"
+    //WebElement query = driver.findElement(By.name("q"));
+    //query.sendKeys("ente");
+
+    //System.out.println(driver.g.getTitle().toString());
 
 
-    public static void homePage() throws Exception {
-        WebClient webClient = new WebClient();
-        try {webClient = new WebClient();
-            //final HtmlPage page = webClient.getPage("http://htmlunit.sourceforge.net");
-            //final HtmlPage page = webClient.getPage("https://www.google.de/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=Ente&start=10");
-/*            final HtmlPage page = webClient.getPage("https://metager.de/klassik/meta/meta.ger1?start=1&k=yes&check_time=3&ui=de&langfilter=yes&eingabe="
-                + "ente&mm=and&lang=all&maxtreffer=9999999&time=1&hitsPerServer=2&textmenge=1&wissRank=on&pdfboost=on&quicktips=beschleuniger&linkTest=no&sprueche="
-                + "on&wikiboost=on&synonyme=on&dmoz=on&exalead=on&fastbot=on&wikipedia=on&yacy=on&witch=on&overture=on&nebel=on&metarss=on&beammachine=on&allesklar="
-                + "on&suchticker=on&bing=on&onenewspage=on&onenewspagegermany=on&BASE=on&minism=on&fportal=on&clewwa=on&qsensei=on&harvest=on&pers=yes&onenewspagevideo="
-                + "on&blogsearch=on&zeitde=on&tauchen=on&astronomie=on&regengergie=on&goyax=on&bildersuche=on&webpageanalyse=on&ebay=on&semapro=on&mg_produkt2=on&yandex="
-                + "on&dmozint=on&usunis=on");*/
-            //final HtmlPage page = webClient.getPage("https://www.bing.com/search?q=ente&first=11&FORM=PORE");
-            final HtmlPage page = webClient.getPage("https://de.search.yahoo.com/search;_ylt=A9mSs2Z3GjZV_W8AzOEzCQx." +
-                    ";_ylu=X3oDMTFjMjlnaDZpBGNvbG8DaXIyBHBvcwMxBHZ0aWQDU1dJREUwMV8xBHNlYwNwYWdpbmF0aW9u?p=ente&b=22&pz=10&pstart=4");
-           //System.out.println(page.getTitleText());
 
-            //final String pageAsXml = page.asXml();
-            //System.out.println(pageAsXml.intern().toString());
+    // Sleep until the div we want is visible or 5 seconds is over
+/*            long end = System.currentTimeMillis() + 5000;
+            List<WebElement> resultsDiv;
+            while (System.currentTimeMillis() < end) {
+                resultsDiv = driver.findElements(By.id("results"));
 
-            final String pageAsText = page.asText().toString();
-            System.out.println(pageAsText);
-            System.err.println("Ende__________________________________________________________");
-        }catch (Exception e) {
-            System.err.println("Caught Exception: " + e.getMessage());
+            }
+            List<WebElement> test = driver.findElements(By.className("results"));
+            for (WebElement suggestion : test) {
+                System.out.println(suggestion.getText());
+            }*/
+
+    // And now list the suggestions
+/*
+        //List<WebElement> test = driver.findElements(By.className("entry-content"));
+        List<WebElement> test = driver.findElements(By.className("c-info__body"));
+        System.out.println(test);
+
+        List<WebElement> allSuggestions = driver.findElements(By.xpath("//*[@class='entry-content']"));
+            System.out.println(allSuggestions);
+
+        for (WebElement suggestion : allSuggestions) {
+            System.out.println(suggestion.getText());
         }
-    }
 
-    public static void getElements() {
-        try {
-            WebClient webClient = new WebClient();
-             webClient = new WebClient();
-            final HtmlPage page = webClient.getPage("https://www.google.de/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=Ente&start=10");
-            final HtmlDivision div = page.getHtmlElementById("rc");
-            final HtmlAnchor anchor = page.getAnchorByName("rc");
-            System.err.println(div);
-            System.err.println(anchor);
-        }catch (Exception e) {
-            System.err.println("Caught Exception: " + e.getMessage());
-        }
-    }
-}
+        driver.quit();
+
+        */
+
+//    }

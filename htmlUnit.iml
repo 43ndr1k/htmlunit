@@ -8,6 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="htmlunit-2.16-OSGi" level="project" />
-    <orderEntry type="library" name="selenium-java-2.45.0" level="project" />
+    <orderEntry type="library" name="selenium-2.45" level="project" />
   </component>
 </module>
