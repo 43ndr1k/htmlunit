@@ -20,7 +20,7 @@ public class Main {
 
 
 
-        unitDriver.get("https://duckduckgo.com/");
+        unitDriver.get("");
         WebElement query = unitDriver.findElement(By.name("q"));
         query.sendKeys("ente");
         String domainName = unitDriver.getTitle();
@@ -38,9 +38,9 @@ public class Main {
 
 
 
+//-------------
 
-
-
+//____________
 
 
 
