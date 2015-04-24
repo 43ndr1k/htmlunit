@@ -14,30 +14,79 @@ public class Main {
 
         // Declaring and initialising the HtmlUnitWebDriver
         HtmlUnitDriver unitDriver = new HtmlUnitDriver(BrowserVersion.CHROME);
+
         //unitDriver.setJavascriptEnabled(true);
 
+        //?kah=dk-da&kl=de-de&kad=de_DE&kaj=m&k1=-1&q=Harry%20Potter
 
 
-
-            unitDriver.get("https://duckduckgo.com/html/?q=Harry%20Potter");
-/*        WebElement query = unitDriver.findElement(By.name("q"));
-        query.sendKeys("ente");*/
-            String domainName = unitDriver.getTitle();
-            System.out.println("Domain name is " + domainName);
-
-            // List<WebElement> test = unitDriver.findElements(By.className("links_main links_deep"));
-            List<WebElement> test1 = unitDriver.findElements(By.id("links_wrapper"));
-            //System.out.println(test);
-
-            for (WebElement tt : test1) {
-                System.out.println(tt.getText().toString());
-                System.out.println("_________________________________");
-                System.out.println(tt.toString());
-            }
+        unitDriver.get("https://duckduckgo.com/html/?kah=dk-da&kl=de-de&kad=de_DE&kaj=m&k1=-1&q=ente");
+/*
+        Sendet die Suchanfrage und klickt auf den Suchbutton
+        WebElement query = unitDriver.findElement(By.name("q"));
+        query.sendKeys("ente");
+        query.submit();*/
 
 
+        String domainName = unitDriver.getTitle();
+        System.out.println("Domain name is " + domainName);
 
+        // List<WebElement> test = unitDriver.findElements(By.className("links_main links_deep"));
+        List<WebElement> test1 = unitDriver.findElements(By.id("links"));
+        //System.out.println(test);
+
+        for (WebElement tt : test1) {
+            System.out.println(tt.getText().toString());
+            System.out.println("_________________________________################______________");
+
+            //System.out.println(tt.toString());
+        }
+
+        List<WebElement> test2 = unitDriver.findElements(By.className("large"));
+
+         for (WebElement tt : test2) {
+            System.out.println(tt.getText().toString());
+            System.out.println("_________________________________");
+
+            //System.out.println(tt.toString());
+        }
+
+        List<WebElement> test3 = unitDriver.findElements(By.className("url"));
+
+        for (WebElement tt : test3) {
+            System.out.println(tt.getText().toString());
+            System.out.println("_________________________________");
+
+            //System.out.println(tt.toString());
+        }
+
+        List<WebElement> test4 = unitDriver.findElements(By.className("snippet"));
+
+        for (WebElement tt : test4) {
+            System.out.println(tt.getText().toString());
+            System.out.println("_________________________________");
+
+            //System.out.println(tt.toString());
+        }
+
+        System.out.println("########################################################################################");
+
+  /*      WebElement next = unitDriver.findElement(By.className("navbutton"));
+        next.click();
+        //Thread.sleep(5000);
+
+        List<WebElement> test2 = unitDriver.findElements(By.id("links_wrapper"));
+        //System.out.println(test);
+
+        for (WebElement tt : test2) {
+            System.out.println(tt.getText().toString());
+            System.out.println("_________________________________");
+            System.out.println(tt.toString());
+        }
+*/
     }
+
+
 
 }
 
@@ -80,16 +129,16 @@ public class Main {
 
 */
 
-    //driver.get("https://duckduckgo.com/?q=test&ia=about");
-    // Enter the query string "Cheese"
-    //WebElement query = driver.findElement(By.name("q"));
-    //query.sendKeys("ente");
+//driver.get("https://duckduckgo.com/?q=test&ia=about");
+// Enter the query string "Cheese"
+//WebElement query = driver.findElement(By.name("q"));
+//query.sendKeys("ente");
 
-    //System.out.println(driver.g.getTitle().toString());
+//System.out.println(driver.g.getTitle().toString());
 
 
 
-    // Sleep until the div we want is visible or 5 seconds is over
+// Sleep until the div we want is visible or 5 seconds is over
 /*            long end = System.currentTimeMillis() + 5000;
             List<WebElement> resultsDiv;
             while (System.currentTimeMillis() < end) {
@@ -101,7 +150,7 @@ public class Main {
                 System.out.println(suggestion.getText());
             }*/
 
-    // And now list the suggestions
+// And now list the suggestions
 /*
         //List<WebElement> test = driver.findElements(By.className("entry-content"));
         List<WebElement> test = driver.findElements(By.className("c-info__body"));
