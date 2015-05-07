@@ -1,8 +1,10 @@
-import com.gargoylesoftware.htmlunit.BrowserVersion;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 
 public class Main {
@@ -13,14 +15,17 @@ public class Main {
 
 
         // Declaring and initialising the HtmlUnitWebDriver
-        HtmlUnitDriver unitDriver = new HtmlUnitDriver(BrowserVersion.CHROME);
+        HtmlUnitDriver unitDriver = new HtmlUnitDriver();
 
-        //unitDriver.setJavascriptEnabled(true);
+        unitDriver.setJavascriptEnabled(true);
 
         //?kah=dk-da&kl=de-de&kad=de_DE&kaj=m&k1=-1&q=Harry%20Potter
 
 
         unitDriver.get("https://duckduckgo.com/html/?kah=dk-da&kl=de-de&kad=de_DE&kaj=m&k1=-1&q=ente");
+       // unitDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+        //unitDriver.get("https://duckduckgo.com/?kah=dk-da&kl=de-de&kad=de_DE&kaj=m&k1=-1&q=ente");
 /*
         Sendet die Suchanfrage und klickt auf den Suchbutton
         WebElement query = unitDriver.findElement(By.name("q"));
@@ -31,58 +36,54 @@ public class Main {
         String domainName = unitDriver.getTitle();
         System.out.println("Domain name is " + domainName);
 
-        // List<WebElement> test = unitDriver.findElements(By.className("links_main links_deep"));
-        List<WebElement> test1 = unitDriver.findElements(By.id("links"));
-        //System.out.println(test);
+        int z=0;
+        String zeile = "n";
+       do {
 
-        for (WebElement tt : test1) {
-            System.out.println(tt.getText().toString());
-            System.out.println("_________________________________################______________");
+           if (zeile.equals("j")) {
 
-            //System.out.println(tt.toString());
-        }
+               for (int a =0; a < z;a++) {
+                   WebElement next = unitDriver.findElement(By.className("navbutton"));
+                   next.click();
+               }
 
-        List<WebElement> test2 = unitDriver.findElements(By.className("large"));
 
-         for (WebElement tt : test2) {
-            System.out.println(tt.getText().toString());
-            System.out.println("_________________________________");
+           }
+            List<WebElement> test2 = unitDriver.findElements(By.className("large"));
+            List<WebElement> test3 = unitDriver.findElements(By.className("url"));
+            List<WebElement> test4 = unitDriver.findElements(By.className("snippet"));
 
-            //System.out.println(tt.toString());
-        }
+            for (int i = 0; i < test2.size(); i++) {
+                System.out.println(test2.get(i).getText().toString());
+                System.out.println(test3.get(i).getText().toString());
+                System.out.println(test4.get(i).getText().toString());
+                System.out.println("_________________________________");
 
-        List<WebElement> test3 = unitDriver.findElements(By.className("url"));
 
-        for (WebElement tt : test3) {
-            System.out.println(tt.getText().toString());
-            System.out.println("_________________________________");
+            }
+           System.out.println("########################################################################################");
 
-            //System.out.println(tt.toString());
-        }
+           BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
+           System.out.print("Geben Sie etwas ein: ");
 
-        List<WebElement> test4 = unitDriver.findElements(By.className("snippet"));
+           try {
+               zeile = console.readLine();
+               z++;
+           } catch (IOException e) {
+               // Sollte eigentlich nie passieren
+               e.printStackTrace();
+           }
 
-        for (WebElement tt : test4) {
-            System.out.println(tt.getText().toString());
-            System.out.println("_________________________________");
 
-            //System.out.println(tt.toString());
-        }
+        } while (zeile.equals( "j"));
 
-        System.out.println("########################################################################################");
+
 
   /*      WebElement next = unitDriver.findElement(By.className("navbutton"));
         next.click();
         //Thread.sleep(5000);
 
-        List<WebElement> test2 = unitDriver.findElements(By.id("links_wrapper"));
-        //System.out.println(test);
 
-        for (WebElement tt : test2) {
-            System.out.println(tt.getText().toString());
-            System.out.println("_________________________________");
-            System.out.println(tt.toString());
-        }
 */
     }
 
